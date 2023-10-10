@@ -100,6 +100,9 @@ pub fn install() {
     skyline::install_hooks!(
         krool_belly_damage_hook,
     );
+    skyline::install_hooks!(
+        sephiroth_wing_maybe,
+    );
 }
 
 #[skyline::hook(replace=TeamModule::set_hit_team)]
@@ -199,6 +202,9 @@ pub unsafe fn hero_rng_hook(fighter: *mut BattleObject) {
 pub unsafe fn psych_up_hit() {
     // do nothing
 }
+
+#[skyline::hook(offset = 0x37b15a0)]
+pub unsafe fn sephiroth_wing_maybe() -> usize { 0 }
 
 // #[skyline::hook(offset = 0xc050d8, inline)]
 // pub unsafe fn krool_belly_toggle_hook(ctx: &mut skyline::hooks::InlineCtx) {
